@@ -40,7 +40,7 @@ const NewsCard = ({ news }) => {
             width={300}
             height={300}
             className="w-full"
-          />
+          /> 
         </figure>
 
         <p className="line-clamp-3">{news.details}</p>
