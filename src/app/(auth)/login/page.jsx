@@ -1,13 +1,28 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import React from "react";
 
 const LoginPage = () => {
-  const handelSubmit = (e) => {
+  const handelSubmit = async(e) => {
     e.preventDefault()
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email,password)
+
+     const { data, error } = await authClient.signIn.email({
+       email: email, // required
+       password: password, // required
+       rememberMe: true,
+       callbackURL: "/",
+     });
+        console.log(data, error);
+        if(error){
+          alert(error.message);
+        }
+        if(data){
+            alert("successfully login")
+        }
     
     
 }
